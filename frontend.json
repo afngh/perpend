@@ -1,0 +1,265 @@
+{
+    "domain": "Frontend (Advanced React → Production)",
+    "description": "You already built a full React chat frontend for dynamo with SSE streaming, theme detection, and localStorage persistence — so plain React basics are skipped. This roadmap pushes toward production-grade React, state management, Next.js, and UI/UX, aimed at your actual end goal: dashboards for AI apps, real-time data, and agent control panels.",
+    "topics": [
+        {
+            "id": "fe-advanced-react",
+            "title": "Advanced React (hooks, context, performance)",
+            "priority": "high",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 20,
+            "note": "You know basic hooks/SSE already — this fills in the patterns that break at scale.",
+            "subtopics": [
+                {
+                    "id": "fe-ar-1",
+                    "title": "Custom hooks for shared logic (extract your SSE streaming logic into a reusable useStream hook)",
+                    "status": "todo",
+                    "resources": [
+                        "React docs: 'Reusing Logic with Custom Hooks'"
+                    ]
+                },
+                {
+                    "id": "fe-ar-2",
+                    "title": "useReducer + useContext for complex local state (before reaching for Redux/Zustand)",
+                    "status": "todo",
+                    "resources": [
+                        "Kent C. Dodds - 'How to use React Context effectively'"
+                    ]
+                },
+                {
+                    "id": "fe-ar-3",
+                    "title": "Performance: React.memo, useMemo, useCallback — and when they actually help vs add noise",
+                    "status": "todo",
+                    "resources": [
+                        "React docs: 'Render and Commit'",
+                        "React DevTools Profiler"
+                    ]
+                },
+                {
+                    "id": "fe-ar-4",
+                    "title": "Avoiding re-render storms in streaming UIs (token-by-token updates without janking the whole tree)",
+                    "status": "todo",
+                    "resources": [
+                        "Directly apply to your dynamo chat frontend's token stream"
+                    ]
+                },
+                {
+                    "id": "fe-ar-5",
+                    "title": "Suspense + concurrent rendering basics (useTransition, useDeferredValue)",
+                    "status": "todo",
+                    "resources": [
+                        "React docs: 'Concurrent Features'"
+                    ]
+                },
+                {
+                    "id": "fe-ar-6",
+                    "title": "Error boundaries & graceful degradation for streaming/network failures",
+                    "status": "todo",
+                    "resources": [
+                        "react-error-boundary library docs"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fe-state-mgmt",
+            "title": "State Management (Redux / Zustand)",
+            "priority": "high",
+            "level": "zero-to-production",
+            "estimated_hours": 15,
+            "note": "New tools for you — Zustand first (fits your minimal-abstraction style), then Redux for understanding the more verbose alternative.",
+            "subtopics": [
+                {
+                    "id": "fe-sm-1",
+                    "title": "Zustand fundamentals: stores, selectors, avoiding unnecessary re-renders",
+                    "status": "todo",
+                    "resources": [
+                        "Zustand official docs"
+                    ]
+                },
+                {
+                    "id": "fe-sm-2",
+                    "title": "Rebuild your dynamo chat state (messages, streaming status, theme) in Zustand instead of local state/localStorage",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed refactor exercise"
+                    ]
+                },
+                {
+                    "id": "fe-sm-3",
+                    "title": "Redux Toolkit fundamentals: slices, thunks, RTK Query for data fetching",
+                    "status": "todo",
+                    "resources": [
+                        "Redux Toolkit official tutorial"
+                    ]
+                },
+                {
+                    "id": "fe-sm-4",
+                    "title": "When to use global state vs server state (React Query/TanStack Query) — critical for agent control panels with live backend data",
+                    "status": "todo",
+                    "resources": [
+                        "TanStack Query docs: 'Overview'"
+                    ]
+                },
+                {
+                    "id": "fe-sm-5",
+                    "title": "Persisting and hydrating state (localStorage/IndexedDB middleware) the right way",
+                    "status": "todo",
+                    "resources": [
+                        "zustand/middleware persist docs"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fe-nextjs",
+            "title": "Next.js (SSR + fullstack React)",
+            "priority": "critical",
+            "level": "zero-to-advanced",
+            "estimated_hours": 30,
+            "note": "New framework for you, high leverage since it replaces a lot of your Django+React split for frontend-heavy projects.",
+            "subtopics": [
+                {
+                    "id": "fe-nx-1",
+                    "title": "App Router fundamentals: file-based routing, layouts, server vs client components",
+                    "status": "todo",
+                    "resources": [
+                        "Next.js official docs: 'App Router'"
+                    ]
+                },
+                {
+                    "id": "fe-nx-2",
+                    "title": "Data fetching patterns: server components, streaming SSR, and how it differs from your Django SSE setup",
+                    "status": "todo",
+                    "resources": [
+                        "Next.js docs: 'Data Fetching and Caching'"
+                    ]
+                },
+                {
+                    "id": "fe-nx-3",
+                    "title": "API routes / route handlers — building a lightweight BFF layer in front of your Django API",
+                    "status": "todo",
+                    "resources": [
+                        "Next.js docs: 'Route Handlers'"
+                    ]
+                },
+                {
+                    "id": "fe-nx-4",
+                    "title": "Streaming responses in Next.js (React Server Components streaming) — compare to your existing SSE implementation",
+                    "status": "todo",
+                    "resources": [
+                        "Vercel AI SDK docs (useChat/streamText patterns)"
+                    ]
+                },
+                {
+                    "id": "fe-nx-5",
+                    "title": "Auth patterns in Next.js (middleware, session handling) for a real multi-user agent dashboard",
+                    "status": "todo",
+                    "resources": [
+                        "NextAuth.js / Auth.js docs"
+                    ]
+                },
+                {
+                    "id": "fe-nx-6",
+                    "title": "Deployment: Vercel vs self-hosted (Docker) — ties into your DevOps learning track",
+                    "status": "todo",
+                    "resources": [
+                        "Next.js docs: 'Deploying'"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fe-uiux",
+            "title": "UI/UX Basics (responsive, accessibility)",
+            "priority": "medium",
+            "level": "zero-to-intermediate",
+            "estimated_hours": 12,
+            "note": "Not your strength area yet — enough here to make dashboards usable and credible, not to become a designer.",
+            "subtopics": [
+                {
+                    "id": "fe-ux-1",
+                    "title": "Responsive layout systems: CSS Grid + Flexbox mastery beyond basic usage",
+                    "status": "todo",
+                    "resources": [
+                        "'Every Layout' by Heydon Pickering"
+                    ]
+                },
+                {
+                    "id": "fe-ux-2",
+                    "title": "Design tokens & consistent spacing/typography scales for dashboard UIs",
+                    "status": "todo",
+                    "resources": [
+                        "Refactoring UI (book)"
+                    ]
+                },
+                {
+                    "id": "fe-ux-3",
+                    "title": "Accessibility fundamentals: semantic HTML, ARIA roles, keyboard navigation, color contrast",
+                    "status": "todo",
+                    "resources": [
+                        "web.dev/learn/accessibility"
+                    ]
+                },
+                {
+                    "id": "fe-ux-4",
+                    "title": "Data-dense UI patterns: tables, virtualized lists, real-time updating charts (for monitoring dashboards)",
+                    "status": "todo",
+                    "resources": [
+                        "TanStack Table + Recharts/Visx docs"
+                    ]
+                },
+                {
+                    "id": "fe-ux-5",
+                    "title": "Dark/light theming systems done properly (you've done basic detection — now design tokens + CSS variables approach)",
+                    "status": "todo",
+                    "resources": [
+                        "Extend your existing dynamo theme detection into a full design system"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fe-capstone-goal",
+            "title": "Goal Projects: Dashboards for AI apps, real-time data, agent control panels",
+            "priority": "critical",
+            "level": "capstone",
+            "estimated_hours": 25,
+            "note": "Where all the above converges — build these once the prerequisite topics are far enough along.",
+            "subtopics": [
+                {
+                    "id": "fe-cap-1",
+                    "title": "Build a monitoring dashboard for dynamo training runs (loss curves, checkpoints, live metrics from Kaggle logs)",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "fe-cap-2",
+                    "title": "Rebuild the dynamo chat frontend in Next.js with Zustand state and streaming server components",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed migration project"
+                    ]
+                },
+                {
+                    "id": "fe-cap-3",
+                    "title": "Build an agent control panel for your Groq multi-agent coding tool: live tool-call feed, approval/interrupt controls, run history",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project, tied to your multi-agent security-review tool"
+                    ]
+                },
+                {
+                    "id": "fe-cap-4",
+                    "title": "Add real-time updates via WebSockets/SSE to the agent dashboard (task status, streaming tool outputs)",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                }
+            ]
+        }
+    ]
+}
