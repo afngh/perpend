@@ -1,0 +1,211 @@
+{
+    "domain": "Cloud Infrastructure (AWS)",
+    "description": "Transition from local deployments to highly scalable, resilient cloud architectures. This roadmap focuses on provisioning, securing, and maintaining core compute, storage, relational databases, and serverless compute primitives using enterprise-grade Infrastructure as Code (IaC).",
+    "topics": [
+        {
+            "id": "cloud-infrastructure-as-code",
+            "title": "Infrastructure as Code (IaC) Foundations",
+            "priority": "critical",
+            "level": "zero-to-intermediate",
+            "estimated_hours": 15,
+            "note": "Avoid using the AWS Console manually. You will learn to provision every single AWS resource declaratively using Terraform.",
+            "subtopics": [
+                {
+                    "id": "iac-1",
+                    "title": "Install Terraform and configure the AWS provider along with secure IAM access keys locally",
+                    "status": "todo",
+                    "resources": [
+                        "HashiCorp Learn: Terraform AWS Getting Started",
+                        "AWS IAM Security Best Practices"
+                    ]
+                },
+                {
+                    "id": "iac-2",
+                    "title": "Manage Terraform remote state files securely inside an S3 bucket configured with DynamoDB-backed state locking",
+                    "status": "todo",
+                    "resources": [
+                        "Terraform Documentation: S3 Backend Configuration"
+                    ]
+                },
+                {
+                    "id": "iac-3",
+                    "title": "Architect an isolated Virtual Private Cloud (VPC) from scratch including public/private subnets, Internet Gateways, and NAT Gateways via Terraform",
+                    "status": "todo",
+                    "resources": [
+                        "AWS VPC Architecture Reference Guide"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cloud-compute-ec2",
+            "title": "Cloud Compute (EC2 & Advanced Infrastructure)",
+            "priority": "critical",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 20,
+            "note": "Master secure compute node instances, firewall routing rules, and elastic load balancing policies.",
+            "subtopics": [
+                {
+                    "id": "compute-1",
+                    "title": "Provision an EC2 instance inside a private subnet and set up secure access through an AWS Systems Manager (SSM) Session Manager tunnel instead of open SSH keys",
+                    "status": "todo",
+                    "resources": [
+                        "AWS Systems Manager User Guide: Eliminating Bastion Hosts"
+                    ]
+                },
+                {
+                    "id": "compute-2",
+                    "title": "Configure explicit Security Groups and Network Access Control Lists (NACLs) to strictly isolate compute ingress and egress paths",
+                    "status": "todo",
+                    "resources": [
+                        "AWS Security Group vs NACL: Control Rules Deep-Dive"
+                    ]
+                },
+                {
+                    "id": "compute-3",
+                    "title": "Deploy an Application Load Balancer (ALB) routing live traffic across an Auto Scaling Group (ASG) of EC2 instances scaling on CPU performance triggers",
+                    "status": "todo",
+                    "resources": [
+                        "Elastic Load Balancing and Auto Scaling Architecture Guide"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cloud-storage-s3",
+            "title": "Object Storage (S3)",
+            "priority": "critical",
+            "level": "intermediate",
+            "estimated_hours": 10,
+            "note": "Go beyond basic file hosting to address structural security data compliance, policies, and low-latency distribution channels.",
+            "subtopics": [
+                {
+                    "id": "storage-1",
+                    "title": "Provision a secure Amazon S3 bucket enforced with default KMS server-side encryption and Block Public Access controls",
+                    "status": "todo",
+                    "resources": [
+                        "Amazon S3 Security Best Practices and Encryption Modes"
+                    ]
+                },
+                {
+                    "id": "storage-2",
+                    "title": "Author fine-grained IAM Policies and S3 Bucket Policies granting strictly scoped least-privilege file access to your app's compute role",
+                    "status": "todo",
+                    "resources": [
+                        "AWS IAM Policies Evaluation Logic Blueprint"
+                    ]
+                },
+                {
+                    "id": "storage-3",
+                    "title": "Configure S3 Lifecycle Rules to automatically transition older diagnostic logs or data chunks down into cost-effective glacier storage classes",
+                    "status": "todo",
+                    "resources": [
+                        "Managing Storage Lifecycles with Amazon S3 Lifecycle Configurations"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cloud-databases-rds",
+            "title": "Managed Relational Databases (RDS)",
+            "priority": "high",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 15,
+            "note": "Handle transactional persistence layers by provisioning multi-availability zone database deployments.",
+            "subtopics": [
+                {
+                    "id": "databases-1",
+                    "title": "Provision an Amazon RDS PostgreSQL cluster inside isolated private database subnets with automated daily snapshot configurations",
+                    "status": "todo",
+                    "resources": [
+                        "Amazon RDS User Guide: Subnet Groups Configurations"
+                    ]
+                },
+                {
+                    "id": "databases-2",
+                    "title": "Configure high-availability RDS Multi-AZ deployments with Read Replicas to seamlessly handle automatic failover and optimize high read traffic volumes",
+                    "status": "todo",
+                    "resources": [
+                        "RDS Multi-AZ Deployments Architecture and Failover Logic"
+                    ]
+                },
+                {
+                    "id": "databases-3",
+                    "title": "Integrate AWS Secrets Manager into your backend stack to automatically rotate database credentials without breaking application runtimes",
+                    "status": "todo",
+                    "resources": [
+                        "AWS Secrets Manager: Rotating Database Credentials Safely"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cloud-serverless-lambda",
+            "title": "Serverless Architectures (Lambda & API Gateway)",
+            "priority": "high",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 15,
+            "note": "Master ephemeral event-driven compute models, addressing cold-start considerations and request routing systems.",
+            "subtopics": [
+                {
+                    "id": "serverless-1",
+                    "title": "Author an event-driven AWS Lambda function using Python to automatically compress images immediately upon arrival into an S3 upload bucket",
+                    "status": "todo",
+                    "resources": [
+                        "AWS Lambda Developer Guide: Using AWS Lambda with Amazon S3"
+                    ]
+                },
+                {
+                    "id": "serverless-2",
+                    "title": "Expose serverless runtimes to the web using Amazon API Gateway HTTP APIs, setting up custom authorization routes and cors controls",
+                    "status": "todo",
+                    "resources": [
+                        "Building Routing Topologies with Amazon API Gateway"
+                    ]
+                },
+                {
+                    "id": "serverless-3",
+                    "title": "Package your Python dependencies as a custom AWS Lambda Layer or deploy your function inside a Docker container using Lambda container image support to bypass file size limitations",
+                    "status": "todo",
+                    "resources": [
+                        "Deploying Lambda Functions as Container Images"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cloud-capstone-deployment",
+            "title": "Cloud Production Capstone Engineering",
+            "priority": "critical",
+            "level": "capstone",
+            "estimated_hours": 25,
+            "note": "Synthesize your full application infrastructure stack entirely via code definitions targeting cloud environments.",
+            "subtopics": [
+                {
+                    "id": "cloud-cap-1",
+                    "title": "Write a unified Terraform configuration that provisions a production-ready VPC, an RDS PostgreSQL database instance, an S3 bucket, and an EC2 scaling layer",
+                    "status": "todo",
+                    "resources": [
+                        "Self-Directed Cloud Capstone Architecture Specifications"
+                    ]
+                },
+                {
+                    "id": "cloud-cap-2",
+                    "title": "Deploy your Django/FastAPI backend to an EC2 auto-scaling fleet behind an Application Load Balancer, connecting it directly to your RDS database and S3 asset pipeline",
+                    "status": "todo",
+                    "resources": [
+                        "Production Checklist for Deploying Python Backends on AWS"
+                    ]
+                },
+                {
+                    "id": "cloud-cap-3",
+                    "title": "Offload high-overhead background workflows (such as periodic data scraping or batch AI model evaluation tasks) out to AWS Lambda endpoints triggered via Amazon EventBridge chron schedules",
+                    "status": "todo",
+                    "resources": [
+                        "Creating Cron Schedules using Amazon EventBridge Rules"
+                    ]
+                }
+            ]
+        }
+    ]
+}
