@@ -1,0 +1,368 @@
+{
+    "domain": "AI Engineering (Core Zone)",
+    "description": "You've already built a transformer from scratch and trained it (dynamo) — model training/architecture is done. This roadmap skips that entirely and moves to production AI engineering: deployment, LLM APIs, prompting, embeddings/vector DBs, RAG, and fine-tuning vs prompting tradeoffs. You've also already touched FAISS (semantic image search) and Groq (multi-agent tool), so those sections build on real prior work rather than starting cold.",
+    "topics": [
+        {
+            "id": "ai-deployment",
+            "title": "Model Deployment (TorchServe, FastAPI)",
+            "priority": "critical",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 20,
+            "note": "You already serve dynamo via Django SSE — this generalizes that into proper ML-serving infra.",
+            "subtopics": [
+                {
+                    "id": "ai-dep-1",
+                    "title": "TorchServe fundamentals: model archiving (.mar files), handlers, batching config",
+                    "status": "todo",
+                    "resources": [
+                        "TorchServe official docs"
+                    ]
+                },
+                {
+                    "id": "ai-dep-2",
+                    "title": "Package dynamo as a TorchServe model and compare cold-start/latency/throughput vs your current Django serving",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed benchmark project"
+                    ]
+                },
+                {
+                    "id": "ai-dep-3",
+                    "title": "Dynamic batching strategies for inference under concurrent load (grouping requests without breaking streaming)",
+                    "status": "todo",
+                    "resources": [
+                        "TorchServe docs: 'Batch inference'",
+                        "Triton Inference Server docs for comparison"
+                    ]
+                },
+                {
+                    "id": "ai-dep-4",
+                    "title": "GPU memory management in production: model quantization (int8/fp16) to fit more concurrent requests on a T4-class GPU",
+                    "status": "todo",
+                    "resources": [
+                        "PyTorch docs: 'Quantization'"
+                    ]
+                },
+                {
+                    "id": "ai-dep-5",
+                    "title": "Model versioning & rollback strategy (serving dynamo-v1 vs dynamo-v2 side by side, canary rollout)",
+                    "status": "todo",
+                    "resources": [
+                        "MLOps pattern references (Google's 'Rules of ML')"
+                    ]
+                },
+                {
+                    "id": "ai-dep-6",
+                    "title": "Monitoring inference in production: latency percentiles, token/sec throughput, GPU utilization dashboards",
+                    "status": "todo",
+                    "resources": [
+                        "Prometheus + Grafana for GPU/inference metrics"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ai-llm-apis",
+            "title": "LLM APIs (Groq, Mistral, OpenAI-like)",
+            "priority": "high",
+            "level": "intermediate",
+            "estimated_hours": 10,
+            "note": "You already use Groq's free tier for your multi-agent tool — this deepens that and adds the broader API landscape.",
+            "subtopics": [
+                {
+                    "id": "ai-api-1",
+                    "title": "Groq API deep dive: function/tool calling, streaming, model selection tradeoffs (speed vs quality across their hosted models)",
+                    "status": "todo",
+                    "resources": [
+                        "Groq official API docs"
+                    ]
+                },
+                {
+                    "id": "ai-api-2",
+                    "title": "OpenAI-compatible API conventions (most providers mirror this) — request/response schema, streaming SSE format",
+                    "status": "todo",
+                    "resources": [
+                        "OpenAI API reference (schema-level, not usage-restricted)"
+                    ]
+                },
+                {
+                    "id": "ai-api-3",
+                    "title": "Mistral API + open-weight model hosting options (comparing hosted APIs vs self-hosting dynamo-scale models)",
+                    "status": "todo",
+                    "resources": [
+                        "Mistral official docs"
+                    ]
+                },
+                {
+                    "id": "ai-api-4",
+                    "title": "Multi-provider abstraction layer (LiteLLM or hand-rolled) so your agent tool isn't locked to one provider",
+                    "status": "todo",
+                    "resources": [
+                        "LiteLLM docs"
+                    ]
+                },
+                {
+                    "id": "ai-api-5",
+                    "title": "Cost/latency/rate-limit tradeoffs across providers — build a decision matrix for your multi-agent tool's model choice",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed comparison exercise"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ai-prompt-engineering",
+            "title": "Prompt Engineering",
+            "priority": "high",
+            "level": "zero-to-advanced",
+            "estimated_hours": 12,
+            "subtopics": [
+                {
+                    "id": "ai-pe-1",
+                    "title": "Core techniques: few-shot, chain-of-thought, structured output prompting (JSON mode)",
+                    "status": "todo",
+                    "resources": [
+                        "Anthropic's prompt engineering docs (docs.claude.com)",
+                        "OpenAI's prompting guide"
+                    ]
+                },
+                {
+                    "id": "ai-pe-2",
+                    "title": "Tool-use/function-calling prompt design for agents — critical for your Groq multi-agent tool's reliability",
+                    "status": "todo",
+                    "resources": [
+                        "Groq/OpenAI function-calling docs"
+                    ]
+                },
+                {
+                    "id": "ai-pe-3",
+                    "title": "System prompt design for multi-agent roles (reviewer agent vs coder agent vs planner agent)",
+                    "status": "todo",
+                    "resources": [
+                        "Anthropic's multi-agent research blog posts"
+                    ]
+                },
+                {
+                    "id": "ai-pe-4",
+                    "title": "Prompt evaluation: building small test sets to measure prompt changes objectively, not by vibes",
+                    "status": "todo",
+                    "resources": [
+                        "promptfoo docs (open-source prompt eval tool)"
+                    ]
+                },
+                {
+                    "id": "ai-pe-5",
+                    "title": "Prompting dynamo itself — since it's small (33M params), understanding what prompting even achieves at that scale vs a frontier LLM",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed experimentation"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ai-embeddings-vectordb",
+            "title": "Embeddings + Vector DBs",
+            "priority": "high",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 15,
+            "note": "You've already built CLIP + FAISS semantic image search — this generalizes to text embeddings and production vector DBs beyond a local FAISS index.",
+            "subtopics": [
+                {
+                    "id": "ai-emb-1",
+                    "title": "Text embedding models: sentence-transformers vs API-based embeddings (OpenAI/Cohere-style) — quality/cost tradeoffs",
+                    "status": "todo",
+                    "resources": [
+                        "sentence-transformers docs",
+                        "MTEB leaderboard for model comparison"
+                    ]
+                },
+                {
+                    "id": "ai-emb-2",
+                    "title": "Beyond FAISS: managed/production vector DBs (Qdrant, Weaviate, pgvector) — when local FAISS stops being enough",
+                    "status": "todo",
+                    "resources": [
+                        "Qdrant docs",
+                        "pgvector docs (fits naturally with your Postgres/Django stack)"
+                    ]
+                },
+                {
+                    "id": "ai-emb-3",
+                    "title": "Indexing strategies: HNSW vs IVF vs flat — revisit your FAISS project's index choice with this framing",
+                    "status": "todo",
+                    "resources": [
+                        "FAISS wiki: 'Guidelines to choose an index'"
+                    ]
+                },
+                {
+                    "id": "ai-emb-4",
+                    "title": "Chunking strategies for text (fixed-size, semantic, recursive) — foundational for RAG next",
+                    "status": "todo",
+                    "resources": [
+                        "LangChain/LlamaIndex docs on text splitters (concepts, not necessarily the framework)"
+                    ]
+                },
+                {
+                    "id": "ai-emb-5",
+                    "title": "Hybrid search: combining vector similarity with keyword/BM25 for better retrieval",
+                    "status": "todo",
+                    "resources": [
+                        "Qdrant/Weaviate hybrid search docs"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ai-rag",
+            "title": "RAG (Retrieval-Augmented Generation)",
+            "priority": "critical",
+            "level": "zero-to-advanced",
+            "estimated_hours": 18,
+            "subtopics": [
+                {
+                    "id": "ai-rag-1",
+                    "title": "RAG fundamentals: retrieve-then-generate pipeline, why it beats pure fine-tuning for factual grounding",
+                    "status": "todo",
+                    "resources": [
+                        "Original RAG paper (Lewis et al. 2020)",
+                        "Pinecone's RAG learning guide"
+                    ]
+                },
+                {
+                    "id": "ai-rag-2",
+                    "title": "Build a from-scratch RAG pipeline (no framework) using pgvector/Qdrant + a Groq LLM call — fits your 'no black-box abstractions' style",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "ai-rag-3",
+                    "title": "Retrieval quality evaluation: recall@k, MRR, and why bad retrieval quietly ruins RAG output quality",
+                    "status": "todo",
+                    "resources": [
+                        "RAGAS docs (evaluation framework, concepts transferable even if you don't use the lib)"
+                    ]
+                },
+                {
+                    "id": "ai-rag-4",
+                    "title": "Advanced RAG: re-ranking (cross-encoders), query rewriting/expansion, multi-hop retrieval",
+                    "status": "todo",
+                    "resources": [
+                        "Cohere Rerank docs (concept-level)"
+                    ]
+                },
+                {
+                    "id": "ai-rag-5",
+                    "title": "Agentic RAG: letting your multi-agent tool decide when/what to retrieve rather than always retrieving",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed, ties into your Groq multi-agent security tool"
+                    ]
+                },
+                {
+                    "id": "ai-rag-6",
+                    "title": "Applied project: RAG over your own codebase/docs for the multi-agent coding tool's context retrieval",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed capstone-adjacent project"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ai-finetuning-vs-prompting",
+            "title": "Fine-tuning vs Prompting",
+            "priority": "high",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 12,
+            "note": "You have unique standing here — you've trained a model from scratch, so fine-tuning mechanics aren't new, but the decision framework and PEFT methods are.",
+            "subtopics": [
+                {
+                    "id": "ai-ft-1",
+                    "title": "Decision framework: when prompting/RAG suffices vs when fine-tuning is actually justified (data availability, latency, cost)",
+                    "status": "todo",
+                    "resources": [
+                        "OpenAI's fine-tuning guide (decision framing section)"
+                    ]
+                },
+                {
+                    "id": "ai-ft-2",
+                    "title": "Parameter-efficient fine-tuning: LoRA/QLoRA fundamentals — full fine-tuning is what you already know (from-scratch training), this is the lighter-weight alternative",
+                    "status": "todo",
+                    "resources": [
+                        "LoRA paper (Hu et al.)",
+                        "Hugging Face PEFT docs"
+                    ]
+                },
+                {
+                    "id": "ai-ft-3",
+                    "title": "Fine-tune a small open-weight model (or continue dynamo's training) with LoRA for a specific task, compare to prompting the same task",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project, natural extension of dynamo"
+                    ]
+                },
+                {
+                    "id": "ai-ft-4",
+                    "title": "Instruction tuning vs RLHF/DPO — conceptual overview of how far past your from-scratch pretraining these techniques go",
+                    "status": "todo",
+                    "resources": [
+                        "InstructGPT paper",
+                        "DPO paper (Rafailov et al.)"
+                    ]
+                },
+                {
+                    "id": "ai-ft-5",
+                    "title": "Catastrophic forgetting and evaluation regressions after fine-tuning — how to detect them",
+                    "status": "todo",
+                    "resources": [
+                        "Survey papers on continual learning / catastrophic forgetting"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ai-capstone-goal",
+            "title": "Goal Projects: Production AI systems combining everything above",
+            "priority": "critical",
+            "level": "capstone",
+            "estimated_hours": 25,
+            "subtopics": [
+                {
+                    "id": "ai-cap-1",
+                    "title": "Deploy dynamo via TorchServe or a hand-rolled batching layer in FastAPI, with monitoring dashboards",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "ai-cap-2",
+                    "title": "Build a from-scratch RAG system (pgvector + Groq) over your own project docs, exposed through the dynamo-style API",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "ai-cap-3",
+                    "title": "Add agentic RAG + tool-calling to your multi-agent security-review coding tool, with prompt evals to measure reliability",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "ai-cap-4",
+                    "title": "LoRA fine-tune a small model for a narrow task and write up a fine-tuning-vs-prompting comparison as a portfolio piece",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project + writeup"
+                    ]
+                }
+            ]
+        }
+    ]
+}
