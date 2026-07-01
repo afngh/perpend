@@ -1,0 +1,407 @@
+{
+    "domain": "Backend Engineering (Main Strength Area)",
+    "description": "This is your strongest domain already — you're serving dynamo via a Django streaming SSE API. So this roadmap skips 'how Django works' entirely and goes straight to production patterns: advanced Django internals, DRF depth, async backends (FastAPI), caching, background jobs, WebSockets, and auth — aimed at scalable APIs, AI inference backends, and real auth systems.",
+    "topics": [
+        {
+            "id": "be-advanced-django",
+            "title": "Advanced Django (signals, middleware, scaling)",
+            "priority": "high",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 20,
+            "note": "Assumes Django basics + your existing SSE streaming view are already solid.",
+            "subtopics": [
+                {
+                    "id": "be-dj-1",
+                    "title": "Signals: when they help (decoupled side effects) vs when they become debugging nightmares",
+                    "status": "todo",
+                    "resources": [
+                        "Django docs: 'Signals'",
+                        "'Two Scoops of Django' signals chapter"
+                    ]
+                },
+                {
+                    "id": "be-dj-2",
+                    "title": "Custom middleware: request/response processing, timing, auth injection",
+                    "status": "todo",
+                    "resources": [
+                        "Django docs: 'Writing your own middleware'"
+                    ]
+                },
+                {
+                    "id": "be-dj-3",
+                    "title": "ORM performance: select_related/prefetch_related, query optimization, N+1 detection with django-debug-toolbar",
+                    "status": "todo",
+                    "resources": [
+                        "Django docs: 'Database access optimization'"
+                    ]
+                },
+                {
+                    "id": "be-dj-4",
+                    "title": "Database connection pooling and scaling reads (read replicas) for a high-traffic inference API",
+                    "status": "todo",
+                    "resources": [
+                        "PgBouncer docs",
+                        "Django docs: multiple databases"
+                    ]
+                },
+                {
+                    "id": "be-dj-5",
+                    "title": "ASGI in Django: moving your SSE streaming view onto Django Channels/ASGI properly for real concurrency",
+                    "status": "todo",
+                    "resources": [
+                        "Django Channels docs",
+                        "directly upgrades your dynamo API"
+                    ]
+                },
+                {
+                    "id": "be-dj-6",
+                    "title": "Horizontal scaling patterns: stateless Django workers behind a load balancer, session storage in Redis instead of local",
+                    "status": "todo",
+                    "resources": [
+                        "'Two Scoops of Django' deployment chapters"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "be-drf-advanced",
+            "title": "Django REST Framework — Advanced",
+            "priority": "high",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 15,
+            "note": "You've started DRF — this pushes into the parts that matter for real APIs.",
+            "subtopics": [
+                {
+                    "id": "be-drf-1",
+                    "title": "Custom serializers: nested writes, validation logic, SerializerMethodField for computed fields",
+                    "status": "todo",
+                    "resources": [
+                        "DRF docs: 'Serializers'"
+                    ]
+                },
+                {
+                    "id": "be-drf-2",
+                    "title": "ViewSets, routers, and custom actions (@action decorator) for non-CRUD endpoints (like inference triggers)",
+                    "status": "todo",
+                    "resources": [
+                        "DRF docs: 'Viewsets'"
+                    ]
+                },
+                {
+                    "id": "be-drf-3",
+                    "title": "Permissions & throttling: custom permission classes, per-user rate limiting for an inference API",
+                    "status": "todo",
+                    "resources": [
+                        "DRF docs: 'Throttling'"
+                    ]
+                },
+                {
+                    "id": "be-drf-4",
+                    "title": "API versioning strategies and pagination for large result sets",
+                    "status": "todo",
+                    "resources": [
+                        "DRF docs: 'Versioning', 'Pagination'"
+                    ]
+                },
+                {
+                    "id": "be-drf-5",
+                    "title": "Testing DRF endpoints properly: APITestCase, factory-based fixtures, mocking model inference calls",
+                    "status": "todo",
+                    "resources": [
+                        "DRF docs: 'Testing'"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "be-fastapi-async",
+            "title": "Async Backend (FastAPI)",
+            "priority": "critical",
+            "level": "zero-to-advanced",
+            "estimated_hours": 25,
+            "note": "New framework, but highest leverage for AI inference backends since it's async-native and what most production ML serving uses.",
+            "subtopics": [
+                {
+                    "id": "be-fa-1",
+                    "title": "FastAPI fundamentals: async def routes, Pydantic models, dependency injection",
+                    "status": "todo",
+                    "resources": [
+                        "FastAPI official docs (tutorial section)"
+                    ]
+                },
+                {
+                    "id": "be-fa-2",
+                    "title": "Async streaming responses (StreamingResponse) — rebuild your dynamo SSE endpoint in FastAPI and compare to Django's version",
+                    "status": "todo",
+                    "resources": [
+                        "FastAPI docs: 'Custom Response - StreamingResponse'"
+                    ]
+                },
+                {
+                    "id": "be-fa-3",
+                    "title": "async/await deep dive: event loop, asyncio.gather, avoiding blocking calls (critical since PyTorch inference is often sync/blocking)",
+                    "status": "todo",
+                    "resources": [
+                        "Python docs: asyncio",
+                        "run_in_executor for blocking model calls"
+                    ]
+                },
+                {
+                    "id": "be-fa-4",
+                    "title": "Serving PyTorch models in FastAPI: batching requests, GPU queueing, avoiding OOM under concurrent load",
+                    "status": "todo",
+                    "resources": [
+                        "BentoML/TorchServe docs for patterns, even if you self-roll it"
+                    ]
+                },
+                {
+                    "id": "be-fa-5",
+                    "title": "WebSocket support in FastAPI for bidirectional agent communication",
+                    "status": "todo",
+                    "resources": [
+                        "FastAPI docs: 'WebSockets'"
+                    ]
+                },
+                {
+                    "id": "be-fa-6",
+                    "title": "Background tasks in FastAPI (BackgroundTasks) vs when you actually need Celery",
+                    "status": "todo",
+                    "resources": [
+                        "FastAPI docs: 'Background Tasks'"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "be-caching-redis",
+            "title": "Caching (Redis)",
+            "priority": "high",
+            "level": "zero-to-production",
+            "estimated_hours": 10,
+            "subtopics": [
+                {
+                    "id": "be-redis-1",
+                    "title": "Redis fundamentals: data types (strings, hashes, lists, sets, sorted sets), TTLs",
+                    "status": "todo",
+                    "resources": [
+                        "Redis official docs: 'Data types'"
+                    ]
+                },
+                {
+                    "id": "be-redis-2",
+                    "title": "Django/DRF caching with Redis: per-view cache, cache invalidation strategies",
+                    "status": "todo",
+                    "resources": [
+                        "django-redis docs"
+                    ]
+                },
+                {
+                    "id": "be-redis-3",
+                    "title": "Caching model outputs / KV-cache-style patterns for repeated inference requests",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed: cache dynamo responses for identical prompts"
+                    ]
+                },
+                {
+                    "id": "be-redis-4",
+                    "title": "Redis as a message broker for Celery and pub/sub for real-time features",
+                    "status": "todo",
+                    "resources": [
+                        "Redis docs: 'Pub/Sub'"
+                    ]
+                },
+                {
+                    "id": "be-redis-5",
+                    "title": "Redis persistence & eviction policies (RDB vs AOF, LRU eviction) — production ops awareness",
+                    "status": "todo",
+                    "resources": [
+                        "Redis docs: 'Persistence'"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "be-celery-jobs",
+            "title": "Background Jobs (Celery)",
+            "priority": "medium",
+            "level": "zero-to-production",
+            "estimated_hours": 10,
+            "subtopics": [
+                {
+                    "id": "be-cel-1",
+                    "title": "Celery fundamentals: tasks, workers, brokers (Redis as broker)",
+                    "status": "todo",
+                    "resources": [
+                        "Celery official docs: 'First Steps'"
+                    ]
+                },
+                {
+                    "id": "be-cel-2",
+                    "title": "Task retries, idempotency, and dead-letter handling for failed jobs",
+                    "status": "todo",
+                    "resources": [
+                        "Celery docs: 'Task retries'"
+                    ]
+                },
+                {
+                    "id": "be-cel-3",
+                    "title": "Long-running tasks: training job orchestration (kick off a Kaggle-style training run as a Celery task with progress tracking)",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed: wrap dynamo training loop trigger in Celery"
+                    ]
+                },
+                {
+                    "id": "be-cel-4",
+                    "title": "Periodic tasks with Celery Beat (scheduled retraining, cleanup jobs)",
+                    "status": "todo",
+                    "resources": [
+                        "Celery docs: 'Periodic Tasks'"
+                    ]
+                },
+                {
+                    "id": "be-cel-5",
+                    "title": "Monitoring Celery in production: Flower, task result backends",
+                    "status": "todo",
+                    "resources": [
+                        "Flower docs"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "be-websockets",
+            "title": "WebSockets (real-time apps)",
+            "priority": "high",
+            "level": "zero-to-advanced",
+            "estimated_hours": 12,
+            "note": "You've done SSE (one-way); this adds true bidirectional real-time, needed for agent control panels.",
+            "subtopics": [
+                {
+                    "id": "be-ws-1",
+                    "title": "WebSocket protocol fundamentals and where it beats SSE (bidirectional, lower overhead for chat)",
+                    "status": "todo",
+                    "resources": [
+                        "MDN: 'WebSockets API'"
+                    ]
+                },
+                {
+                    "id": "be-ws-2",
+                    "title": "Django Channels: consumers, routing, channel layers backed by Redis",
+                    "status": "todo",
+                    "resources": [
+                        "Django Channels official docs"
+                    ]
+                },
+                {
+                    "id": "be-ws-3",
+                    "title": "Scaling WebSocket connections: connection limits, sticky sessions, horizontal scaling with Redis channel layer",
+                    "status": "todo",
+                    "resources": [
+                        "Channels docs: 'Deploying'"
+                    ]
+                },
+                {
+                    "id": "be-ws-4",
+                    "title": "Build a bidirectional agent control channel: send interrupt/approval signals to a running agent, receive live tool-call events",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed, ties into your Groq multi-agent tool"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "be-auth",
+            "title": "Auth Systems (JWT, OAuth)",
+            "priority": "high",
+            "level": "zero-to-production",
+            "estimated_hours": 15,
+            "subtopics": [
+                {
+                    "id": "be-auth-1",
+                    "title": "JWT fundamentals: structure, signing (HS256 vs RS256), expiry, refresh token rotation",
+                    "status": "todo",
+                    "resources": [
+                        "jwt.io debugger + docs"
+                    ]
+                },
+                {
+                    "id": "be-auth-2",
+                    "title": "Implementing JWT auth in DRF (djangorestframework-simplejwt) and in FastAPI (python-jose/fastapi-users)",
+                    "status": "todo",
+                    "resources": [
+                        "simplejwt docs",
+                        "FastAPI security docs"
+                    ]
+                },
+                {
+                    "id": "be-auth-3",
+                    "title": "OAuth2 flows: authorization code flow, PKCE for SPAs, and implementing 'Sign in with GitHub' (fits your GitHub-heavy workflow)",
+                    "status": "todo",
+                    "resources": [
+                        "OAuth 2.0 Simplified (Aaron Parecki)"
+                    ]
+                },
+                {
+                    "id": "be-auth-4",
+                    "title": "Session security: secure cookie flags, CSRF protection, token storage tradeoffs (localStorage vs httpOnly cookies)",
+                    "status": "todo",
+                    "resources": [
+                        "OWASP: 'JWT Cheat Sheet'"
+                    ]
+                },
+                {
+                    "id": "be-auth-5",
+                    "title": "Role-based access control (RBAC) for multi-user agent dashboards (admin vs viewer permissions on agent runs)",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed design exercise"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "be-capstone-goal",
+            "title": "Goal Projects: Scalable APIs, AI inference backends, Auth systems",
+            "priority": "critical",
+            "level": "capstone",
+            "estimated_hours": 25,
+            "subtopics": [
+                {
+                    "id": "be-cap-1",
+                    "title": "Migrate/duplicate dynamo's inference API to FastAPI with async streaming + request batching",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "be-cap-2",
+                    "title": "Add Redis caching + Celery-based async training triggers to the dynamo backend",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "be-cap-3",
+                    "title": "Build full JWT + OAuth (GitHub login) auth system in front of the dynamo API for multi-user access",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project"
+                    ]
+                },
+                {
+                    "id": "be-cap-4",
+                    "title": "Build the backend half of the agent control panel: WebSocket channel streaming live tool calls from your Groq multi-agent tool",
+                    "status": "todo",
+                    "resources": [
+                        "Self-directed project, pairs with frontend capstone"
+                    ]
+                }
+            ]
+        }
+    ]
+}
