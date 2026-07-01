@@ -1,0 +1,279 @@
+{
+    "domain": "DevOps & Infrastructure Engineering",
+    "description": "Transition from local developer to production-grade ops engineer. This roadmap focuses on absolute mastery of containerization, local orchestration, container scheduling at scale via Kubernetes, and constructing robust, automated CI/CD deployment pipelines targeting cloud environments.",
+    "topics": [
+        {
+            "id": "devops-docker-mastery",
+            "title": "Docker Production Mastery",
+            "priority": "critical",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 15,
+            "note": "Focus on multi-stage builds, minimal production images, secure container runtimes, and local networking patterns.",
+            "subtopics": [
+                {
+                    "id": "docker-mastery-1",
+                    "title": "Write secure, multi-stage Dockerfiles for Python/Django and React applications to separate build environments from slim runtimes",
+                    "status": "todo",
+                    "resources": [
+                        "Docker Official Documentation: Multi-stage builds",
+                        "Top Practices for Containerizing Python Applications"
+                    ]
+                },
+                {
+                    "id": "docker-mastery-2",
+                    "title": "Optimize image layers using caching, .dockerignore, and switching to distroless or alpine base images to minimize vulnerability attack surfaces",
+                    "status": "todo",
+                    "resources": [
+                        "OWASP Container Security Verification Standard",
+                        "Google Container Tools: Distroless Images GitHub"
+                    ]
+                },
+                {
+                    "id": "docker-mastery-3",
+                    "title": "Implement non-root user execution directives inside Docker containers to prevent container-breakout root privileges on the host system",
+                    "status": "todo",
+                    "resources": [
+                        "Docker Security Best Practices for Application Developers"
+                    ]
+                },
+                {
+                    "id": "docker-mastery-4",
+                    "title": "Implement and use Docker health checks for container dependency tracking (e.g., ensuring your database container is healthy before launching backend server process)",
+                    "status": "todo",
+                    "resources": [
+                        "Docker Compose specification: Healthcheck instruction"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "devops-docker-compose",
+            "title": "Docker Compose Orchestration",
+            "priority": "critical",
+            "level": "intermediate",
+            "estimated_hours": 10,
+            "note": "Replicate complex multi-service production topologies smoothly right on your local workspace computer.",
+            "subtopics": [
+                {
+                    "id": "docker-compose-1",
+                    "title": "Architect a multi-container network topology linking React frontend, Django backend, Redis cache, and PostgreSQL database using isolated bridges",
+                    "status": "todo",
+                    "resources": [
+                        "Docker Compose Networking Reference Specification"
+                    ]
+                },
+                {
+                    "id": "docker-compose-2",
+                    "title": "Manage runtime configurations using environment variable overrides, split compose profiles, and externalized secure secrets mapping",
+                    "status": "todo",
+                    "resources": [
+                        "Docker Compose Environment Variables Best Practices"
+                    ]
+                },
+                {
+                    "id": "docker-compose-3",
+                    "title": "Configure persistent data volumes with proper host permission mappings to preserve database and Redis states across container restarts",
+                    "status": "todo",
+                    "resources": [
+                        "Docker Engine Data Management: Storage Volumes Guide"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "devops-kubernetes-foundations",
+            "title": "Kubernetes Architecture & Core Objects",
+            "priority": "high",
+            "level": "zero-to-intermediate",
+            "estimated_hours": 25,
+            "note": "Move past simple runtime commands to understand container lifecycle orchestration, self-healing, and declared configurations.",
+            "subtopics": [
+                {
+                    "id": "k8s-foundations-1",
+                    "title": "Set up a local multi-node cluster environment using Minikube or Kind to analyze the cluster control plane components",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes Official Documentation: Setup via Kind/Minikube",
+                        "Kubernetes Components Architecture Deep-Dive"
+                    ]
+                },
+                {
+                    "id": "k8s-foundations-2",
+                    "title": "Author declarative YAML configurations for Pods, ReplicaSets, and Deployments to specify immutable replica sets and scaling profiles",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes Core Concept Docs: Deployments & State Management"
+                    ]
+                },
+                {
+                    "id": "k8s-foundations-3",
+                    "title": "Configure internal cluster networking abstractions using ClusterIP, NodePort, and LoadBalancer Service resource definitions",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes Service Concepts: Connecting Applications"
+                    ]
+                },
+                {
+                    "id": "k8s-foundations-4",
+                    "title": "Configure application settings inside cluster nodes using ConfigMaps and base64-encoded Secrets mounted as runtime volumes",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes Configuration: Distributing Credentials Securely"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "devops-kubernetes-advanced",
+            "title": "Advanced Production Kubernetes",
+            "priority": "high",
+            "level": "advanced",
+            "estimated_hours": 20,
+            "note": "Gain total mastery over stateful enterprise storage, external traffic ingress rules, and resource quotas.",
+            "subtopics": [
+                {
+                    "id": "k8s-advanced-1",
+                    "title": "Configure an Ingress Controller (e.g., NGINX Ingress) to manage cross-domain routing, path mapping, and automated TLS termination rules",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes NGINX Ingress Controller Guide"
+                    ]
+                },
+                {
+                    "id": "k8s-advanced-2",
+                    "title": "Deploy stateful datastores to the cluster utilizing PersistentVolumes (PV), PersistentVolumeClaims (PVC), and StatefulSets",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes Storage Orchestration: Run Stateful Applications"
+                    ]
+                },
+                {
+                    "id": "k8s-advanced-3",
+                    "title": "Enforce explicit resource requests and limits (CPU/Memory) alongside readiness and liveness probes to ensure fault-tolerant self-healing",
+                    "status": "todo",
+                    "resources": [
+                        "Managing Compute Resources for Containers in Kubernetes"
+                    ]
+                },
+                {
+                    "id": "k8s-advanced-4",
+                    "title": "Implement Horizontal Pod Autoscaling (HPA) metrics rules to dynamically scale out application replicas under heavy user load spikes",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes Horizontal Pod Autoscaler Complete Guide"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "devops-cicd-github-actions",
+            "title": "CI/CD Pipelines: GitHub Actions",
+            "priority": "critical",
+            "level": "intermediate-to-advanced",
+            "estimated_hours": 15,
+            "note": "Automate linting, testing, image building, and modern continuous integration natively inside your repository engine.",
+            "subtopics": [
+                {
+                    "id": "github-actions-1",
+                    "title": "Construct a matrix-based test automation workflow validating Python and Node unit environments concurrently on pull request triggers",
+                    "status": "todo",
+                    "resources": [
+                        "GitHub Actions Documentation: Using Build Matrices"
+                    ]
+                },
+                {
+                    "id": "github-actions-2",
+                    "title": "Implement semantic repository tags checking and automated image pushes directly into target container registries (DockerHub / GitHub Packages)",
+                    "status": "todo",
+                    "resources": [
+                        "Publishing Docker Images with GitHub Actions workflows"
+                    ]
+                },
+                {
+                    "id": "github-actions-3",
+                    "title": "Integrate automated static security code scanning (SAST) and container vulnerability scanning tools like Trivy into pipeline workflows",
+                    "status": "todo",
+                    "resources": [
+                        "Aquasecurity Trivy GitHub Action Configuration Guide"
+                    ]
+                },
+                {
+                    "id": "github-actions-4",
+                    "title": "Utilize GitHub Environments paired with explicit deployment protection rules and manual review gates for critical staging-to-production promotions",
+                    "status": "todo",
+                    "resources": [
+                        "Managing Deployment Environments inside GitHub Actions"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "devops-cicd-jenkins",
+            "title": "Self-Hosted Automations: Jenkins",
+            "priority": "medium",
+            "level": "zero-to-intermediate",
+            "estimated_hours": 15,
+            "note": "Understand standard enterprise automation infrastructure patterns by running, backing up, and orchestration of declarative pipelines.",
+            "subtopics": [
+                {
+                    "id": "jenkins-1",
+                    "title": "Provision a containerized Jenkins server configured with state persistence and attached Docker socket runtimes",
+                    "status": "todo",
+                    "resources": [
+                        "Jenkins User Documentation: Installing and Running Docker agent"
+                    ]
+                },
+                {
+                    "id": "jenkins-2",
+                    "title": "Author a declarative structured 'Jenkinsfile' detailing explicit build stages, post-action alerts, and execution environment specifications",
+                    "status": "todo",
+                    "resources": [
+                        "Jenkins Pipeline Syntax Reference Guide"
+                    ]
+                },
+                {
+                    "id": "jenkins-3",
+                    "title": "Configure system-wide secure credentials lockers inside Jenkins control panels to cleanly pass secret environment context during steps",
+                    "status": "todo",
+                    "resources": [
+                        "Handling Secure Credentials inside Jenkins Pipelines"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "devops-capstone-projects",
+            "title": "Production Capstone Deployment Goals",
+            "priority": "critical",
+            "level": "capstone",
+            "estimated_hours": 25,
+            "note": "Synthesize every element from this domain together by deploying your projects through self-healing, automated infrastructure configurations.",
+            "subtopics": [
+                {
+                    "id": "devops-cap-1",
+                    "title": "Write complete declarative Kubernetes manifests for your todo tracking application (Frontend, API Backend, DB, Cache) and spin it up completely in a local cluster",
+                    "status": "todo",
+                    "resources": [
+                        "Self-Directed Capstone Execution Blueprint"
+                    ]
+                },
+                {
+                    "id": "devops-cap-2",
+                    "title": "Build a zero-downtime Continuous Deployment pipeline via GitHub Actions using rolling updates strategy inside your cluster environment",
+                    "status": "todo",
+                    "resources": [
+                        "Kubernetes Deployments: Performing a Rolling Update"
+                    ]
+                },
+                {
+                    "id": "devops-cap-3",
+                    "title": "Implement centralized cluster metrics collecting by deploying a Prometheus stack with Grafana visualizations showing pod resource health metrics",
+                    "status": "todo",
+                    "resources": [
+                        "Prometheus Operator Deployment Guide for Kubernetes Cluster Monitoring"
+                    ]
+                }
+            ]
+        }
+    ]
+}
