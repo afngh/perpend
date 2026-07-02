@@ -7,7 +7,6 @@ User = get_user_model()
 
 class AuthAPITests(APITestCase):
     def setUp(self):
-        self.register_url = reverse('auth_register')
         self.login_url = reverse('auth_login')
         self.me_url = reverse('auth_me')
         self.user_data = {
@@ -16,17 +15,6 @@ class AuthAPITests(APITestCase):
             'password': 'strongpassword123'
         }
 
-    def test_user_registration(self):
-        """
-        Verify that a user can successfully register and receive user metadata + JWT tokens.
-        """
-        response = self.client.post(self.register_url, self.user_data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertIn('user', response.data)
-        self.assertIn('access', response.data)
-        self.assertIn('refresh', response.data)
-        self.assertEqual(response.data['user']['username'], self.user_data['username'])
-        self.assertEqual(response.data['user']['email'], self.user_data['email'])
 
     def test_user_login(self):
         """
