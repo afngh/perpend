@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import TodoItem
 
-DATA_FILE = os.path.join(settings.BASE_DIR.parent, 'data.json')
+DATA_FILE = os.path.join(settings.BASE_DIR, 'data.json')
 
 def load_roadmap():
     with open(DATA_FILE, 'r') as f:
