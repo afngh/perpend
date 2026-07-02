@@ -29,7 +29,7 @@ function textColorFor(hex) {
     return lum > 0.35 ? '#1a1a1a' : '#ffffff';
 }
 
-const BASE = process.env.REACT_APP_API_URL;
+const BASE = (process.env.REACT_APP_API_URL || '').replace(/['"]/g, '');
 
 function getToken() {
     return localStorage.getItem('access_token');
