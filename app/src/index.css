@@ -1,13 +1,559 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+}
+
+:root {
+  --bg: #ffffff;
+  --nav-height: 60px;
+  --nav-bg: #ffffff;
+  --nav-border: #e8e8e8;
+  --nav-active-indicator: #0055DA;
+  --text-dark: #1a1a1a;
+  --text-muted: #6b7280;
+  --radius: 8px;
+  --transition: 0.18s ease;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 4px;
+  z-index: 100;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navbar::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+
+.navbar-brand-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #FF0052;
+  flex-shrink: 0;
+}
+
+.navbar-brand-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navbar-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  padding: 6px 8px;
+  border-radius: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+
+.navbar-toggle:hover {
+  background: #f3f4f6;
+}
+
+.navbar-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #f3f4f6;
+  z-index: 101;
+}
+
+.navbar-progress-fill {
+  height: 100%;
+  background: var(--nav-active-indicator);
+  width: 0%;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: color var(--transition), background var(--transition);
+  white-space: nowrap;
+  position: relative;
+}
+
+.nav-item:hover {
+  color: var(--text-dark);
+  background: #f3f4f6;
+}
+
+.nav-item.active {
+  color: var(--nav-active-indicator);
+  background: #eff4ff;
+}
+
+.page-container {
+  padding-top: calc(var(--nav-height) + 40px);
+  padding-bottom: 60px;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.topic-header {
+  padding: 0 32px 32px 32px;
+}
+
+.topic-title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: var(--text-dark);
+  letter-spacing: -0.02em;
+}
+
+.topic-subtitle {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.subtopics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+  padding: 0 32px;
+}
+
+.subtopic-box {
+  position: relative;
+  aspect-ratio: 1.6 / 1;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px;
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    opacity 0.35s ease,
+    filter 0.35s ease,
+    transform 0.14s ease;
+}
+
+.subtopic-box:hover {
+  transform: scale(1.03);
+}
+
+.subtopic-box:active {
+  transform: scale(0.97);
+}
+
+.subtopic-box.completed {
+  opacity: 0.28;
+  filter: saturate(0.15);
+}
+
+.subtopic-serial {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.subtopic-icon {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 1.25rem;
+  color: inherit;
+  opacity: 0.85;
+}
+
+.state-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e8e8e8;
+  border-top-color: #0055DA;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: var(--nav-height);
+    align-items: center;
+    overflow-x: visible;
+  }
+
+  .navbar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar-menu {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding: 8px 0 12px;
+    gap: 2px;
+    overflow-x: visible;
+    border-top: 1px solid var(--nav-border);
+    order: 3;
+    flex: 0 0 100%;
+  }
+
+  .navbar-menu.open {
+    display: flex;
+  }
+
+  .navbar-left {
+    order: 1;
+    flex: 1;
+  }
+
+  .navbar-toggle {
+    order: 2;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+
+  .navbar-progress-bar {
+    order: 4;
+    position: static;
+    width: 100%;
+    margin: 0 0 4px;
+  }
+
+  .subtopics-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .subtopic-box {
+    padding: 24px;
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+  }
+
+  .topic-header {
+    padding: 0 16px 24px 16px;
+  }
+
+  .page-container {
+    padding-top: calc(var(--nav-height) + 20px);
+  }
+}
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 24px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+
+.login-brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #FF0052;
+  flex-shrink: 0;
+}
+
+.login-brand-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+}
+
+.login-heading {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  text-transform: uppercase;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+  line-height: 0.95;
+}
+
+.login-sub {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 32px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.login-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #e2e4e9;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  background: #ffffff;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.login-input:focus {
+  border-color: #0055DA;
+}
+
+.login-error {
+  font-size: 0.8rem;
+  color: #FF0052;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-top: -6px;
+}
+
+.login-btn {
+  margin-top: 4px;
+  padding: 12px 0;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background var(--transition), transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: #333333;
+}
+
+.login-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.login-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.login-btn--loading {
+  pointer-events: none;
+}
+
+.login-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 24px;
+  text-align: center;
+  gap: 12px;
+}
+
+.notfound-code {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(6rem, 22vw, 12rem);
+  letter-spacing: -0.02em;
+  line-height: 0.85;
+  color: #f0f0f0;
+  user-select: none;
+}
+
+.notfound-heading {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  text-transform: uppercase;
+  color: var(--text-dark);
+  letter-spacing: -0.01em;
+  margin-top: 10px;
+  line-height: 0.95;
+}
+
+.notfound-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  max-width: 300px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.notfound-btn {
+  margin-top: 12px;
+  padding: 10px 24px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background var(--transition), transform 0.1s ease;
+}
+
+.notfound-btn:hover {
+  background: #333333;
+}
+
+.notfound-btn:active {
+  transform: scale(0.97);
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import { createBrowserRouter, Router, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from "./components/Login";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 
-router = createBrowserRouter([
+const router = createBrowserRouter([
   { path: "/", element: <Login /> },
   { path: "/login", element: <Login /> },
   { path: "/home", element: <Home /> },
