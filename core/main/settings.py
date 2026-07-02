@@ -133,7 +133,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-CORS_ALLOW_ALL_ORIGINS = True
+ALLOWED_HOSTS = [
+    'perpend-hu9k.vercel.app',
+    '.vercel.app',
+    'localhost',
+    '127.0.0.1',
+]
+
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
